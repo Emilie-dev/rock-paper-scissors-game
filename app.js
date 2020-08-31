@@ -3,7 +3,7 @@ let computerScore = 0;
 const userScore_span = document.getElementById('user-score');
 const computerScore_span = document.getElementById('computer-score');
 const scoreBoard_div = document.querySelector('.score-board');
-const result_div = document.querySelector('.result > p');
+const result_p = document.querySelector('.result > p');
 const rock_div = document.getElementById('r');
 const paper_div = document.getElementById('p');
 const scissors_div = document.getElementById('s');
@@ -31,25 +31,22 @@ function win(userChoice, computerChoice) {
 		userChoice
 	)}${smallUserWord} beats ${convertToWord(
 		computerChoice
-	)}${smallComputerWord}. You win! :fire`;
+	)}${smallComputerWord}. You win! :)`;
 }
 
-function lose() {
+function lose(userChoice, computerChoice) {
 	computerScore++;
 	userScore_span.innerHTML = userScore;
 	computerScore_span.innerHTML = computerScore;
 	result_p.innerHTML = `${convertToWord(userChoice)} loses to ${convertToWord(
 		computerChoice
-	)}.You lose... ::sade`;
+	)}.You lose... :(`;
 }
 
-function draw() {
-	computerScore++;
-	userScore_span.innerHTML = userScore;
-	computerScore_span.innerHTML = computerScore;
-	result_p.innerHTML = `${convertToWord(userChoice)} beats ${convertToWord(
+function draw(userChoice, computerChoice) {
+	result_p.innerHTML = `${convertToWord(userChoice)} equals ${convertToWord(
 		computerChoice
-	)}. You win!`;
+	)}. It's a draw.`;
 }
 
 function game(userChoice) {
